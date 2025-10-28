@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"jeanclaude/jeanclaude"
+)
 
 func main() {
-	fmt.Println("Hello, World! My name is jean-claude.")
+	jc := jeanclaude.JeanClaude {}
+	jc.Start()
+	jc.Run()
+	jc.Stop()
 }
