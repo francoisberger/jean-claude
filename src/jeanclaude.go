@@ -1,4 +1,4 @@
-package jeanclaude
+package main
 
 import (
     "bufio"

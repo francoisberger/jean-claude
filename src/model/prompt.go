@@ -1,4 +1,4 @@
-package jeanclaude
+package model
 
 type PromptCode int64
 
