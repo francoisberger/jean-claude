@@ -1,19 +1,21 @@
-package model
+package commandline
 
-type PromptCode int64
+type Code int64
 
 const (
 	// Using iota to set int value for our const
 	// No need to specify after first use
-    Exit PromptCode = iota
+	Unknown Code = iota
+    Exit
     LoadDictionary
     LoadText
     LoadWordList
     Stats
 )
 
-func (p PromptCode) String() string {
-	switch p {
+// Returns a string representation of the commandline code.
+func (c Code) String() string {
+	switch c {
 	case Exit:
 		return "exit"
 	case LoadWordList:
@@ -22,19 +24,9 @@ func (p PromptCode) String() string {
 		return "load text"
 	case LoadDictionary:
 		return "load dictionary"
+	case Unknown:
+		return "unknown"
 	}
-	return "unknown"
-}
-
-type Prompt struct {
-	code PromptCode
-	originalPrompt string
-}
-
-func (p Prompt) Code() PromptCode {
-	return p.code
-}
-
-func (p Prompt) String() string {
-	return p.Code().String()
+	// We should not reach this point
+	panic ("Reaching unknown of the unknown.")
 }
