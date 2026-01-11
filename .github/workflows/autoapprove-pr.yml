@@ -1,0 +1,23 @@
+name: Auto approve PR
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [opened]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/github-script@v4
+      if: ${{ github.event.pull_request.user.login -- 'francoisberger' }} # Only auto approve for me
+      with:
+        script: |
+          const result = await github.pulls.createReview({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number,
+            event: "APPROVE"
+          })
