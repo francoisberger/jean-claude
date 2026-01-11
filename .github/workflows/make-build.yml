@@ -1,8 +1,9 @@
-name: Makefile CI
+name: Make build
 
 on:
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
