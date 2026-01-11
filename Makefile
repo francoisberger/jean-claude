@@ -1,5 +1,6 @@
 binary_name=jean-claude
-build_dir=../build
+build_dir=build
+src_dir=src
 
 help:
 	@echo "Usage:"
@@ -8,7 +9,7 @@ help:
 
 .PHONY: build
 build:
-	GOARCH=amd64 GOOS=linux go build -o ${build_dir}/${binary_name}
+	GOARCH=amd64 GOOS=linux cd ${src_dir} && go build -o ../${build_dir}/${binary_name}
 
 run: build
 	${build_dir}/${binary_name}
